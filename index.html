@@ -12,7 +12,6 @@
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Script -->
-  <script src="assets/javascript/app.js"></script>
 </head>
 <body>
   <!-- Title -->
@@ -70,156 +69,14 @@
           <h1 id=winLose></h1>
       </div>
     </div>
+    <!-- //Reset Button -->
+    <div class="form-check">
+      <button id="reset">
+        </button>
+    </div>
 
-    
-    <!-- onclick="myfunc()" -->
-
-
-  <script>
-    //Variables
-    var set = 0;
-    var correct = 1;
-    var right = 0;
-    var wrong = 0;
-
-    //Functions for each set of questions
-    function questions1(){
-      q1 = "Who owned Neverland Ranch"
-      a1 = "Bob Ross"
-      a2 = "Albert Einstein"
-      a3 = "Michael Jackson"
-      a4 = "Flea"
-      document.getElementById("question").innerHTML = q1
-      document.getElementById("answer1").innerHTML = a1
-      document.getElementById("answer2").innerHTML = a2
-      document.getElementById("answer3").innerHTML = a3
-      document.getElementById("answer4").innerHTML = a4
-      correct = 3;
-    }
-    function questions2(){
-      q1 = "What country has the highest income per capita"
-      a1 = "Denmark"
-      a2 = "Luxembourg"
-      a3 = "Australia"
-      a4 = "Zimbabwe"
-      document.getElementById("question").innerHTML = q1
-      document.getElementById("answer1").innerHTML = a1
-      document.getElementById("answer2").innerHTML = a2
-      document.getElementById("answer3").innerHTML = a3
-      document.getElementById("answer4").innerHTML = a4
-      correct = 2;
-    }
-    function questions3(){
-      q1 = "What year did 9/11 happen"
-      a1 = "1999"
-      a2 = "2003"
-      a3 = "2002"
-      a4 = "2001"
-      document.getElementById("question").innerHTML = q1
-      document.getElementById("answer1").innerHTML = a1
-      document.getElementById("answer2").innerHTML = a2
-      document.getElementById("answer3").innerHTML = a3
-      document.getElementById("answer4").innerHTML = a4
-      correct = 4;
-    }
-    function endScreen(){
-      $('#timer').remove()
-      $('#question').remove()
-      $('#answer1').remove()
-      $('#answer2').remove()
-      $('#answer3').remove()
-      $('#answer4').remove()
-      document.getElementById("resultWin").innerHTML = `You got ${right} right`
-      document.getElementById("resultLose").innerHTML = `You got ${wrong} wrong`
-      clearInterval(count)
-    }
-    function ranOut(){
-      $('#timer').remove()
-      $('#question').remove()
-      $('#answer1').remove()
-      $('#answer2').remove()
-      $('#answer3').remove()
-      $('#answer4').remove()
-      document.getElementById("winLose").innerHTML = "YOU LOSE"
-      document.getElementById("resultWin").innerHTML = `You got ${right} right`
-      document.getElementById("resultLose").innerHTML = `You got ${wrong} wrong`
-    }
-
-    //Countdown Timer
-    // var countDown = new Date("0:0:20").getTime();
-    // var x = setInterval(function(){
-    //   var now = new Date().getTime();
-
-    //   var distance = countDownDate - now;
-
-    //   var seconds = Math.floor((distance % (1000 *60)) / 1000);
-    //   document.getElementById("timer").innerHTML = seconds
-
-    //   if(distance < 0){
-    //     document.getElementById("timer").innerHTML = "TIME'S UP"
-    //     setTimeout(function() {ranOut()}, 500);
-    //   }
-    // }, 1000)
-    
-    var timeleft = 15;
-    var count = setInterval(function(){
-      document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
-      timeleft -= 1;
-      if(timeleft <= 0){
-        clearInterval(count);
-        ranOut()
-      }
-    }, 1000); 
-
-
-    //Time Limit
- 
-
-    //Click Event
-    $("button").on("click", function(){
-      var a = 0;
-      // if ($("#answer4").prop("checked")){
-      //    a = 4;
-      // } 
-      var a = $(this).attr("value")
-      console.log(a)
-      console.log(correct)
-      if(a == correct){
-        $("#winLose").append("Correct!")
-        right++
-      } else {
-        $("#winLose").append("Nope")
-        wrong++
-      }
-
-      setTimeout(function(){
-        $("#winLose").empty();
-        set++
-        console.log(set)
-        switch(set){
-        case 1:
-          questions1();
-          break;
-        case 2:
-          questions2()
-          break;
-        case 3:
-          questions3()
-          break;
-        case 4:
-          endScreen()
-          break;
-        }
-      }, 2000)
-    })
-    //Show question and 4 answers that has a timer
-    //add click events for each answer
-    //make value for wrong answers = wrong and vice versa
-    //if wrong then display wrong and vice versa
-    //add too wrong or right answers
-    //new question with new timer starts
-    //do it till the end where it displays the numbers
-    
-  </script>
+  <!-- Java Script -->
+  <script src="assets/javascript/app.js"></script>
+  
 </body>
 </html>
