@@ -19,40 +19,199 @@
   <div class="jumbotron">
     <h1 class="text-center">Trivia Game</h1>
   </div>
+  <!-- Timer -->
+  <div class=row>
+    <div class=col-6>
+      <p id=timer>15 seconds remaining</p>
+    </div>
+  </div>
+  <!-- How many you got Right -->
+  <div class=row>
+    <div class=col-6>
+      <h2 id=resultWin></h2>
+    </div>
+  </div>
+  <!-- How many you got wrong -->
+  <div class=row>
+    <div class=col-6>
+      <h2 id=resultLose></h2>
+    </div>
+  </div>
   <!-- question -->
   <div class=row>
     <div class=col-6>
       <h2 id=question>What is the answer?</h2>
     </div>
   </div>
+  <!-- Answers -->
   <div class="form-check">
-      <input class="form-check-input" type="radio" name="questions" id="answer1" value="1">
-      <label class="form-check-label" for="answers">
+      <button class="form-check-label" for="answers" id="answer1" value="1">
         This is the first answer
-      </label>
+        </button>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="questions" id="answer2" value="2">
-      <label class="form-check-label" for="answers">
+      <button class="form-check-label" for="answers" id="answer2" value="2">
         This is the second answer
-      </label>
+      </button>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="questions" id="answer3" value="3">
-      <label class="form-check-label" for="answers">
+      <button class="form-check-label" for="answers" id="answer3" value="3">
         This is the third answer
-      </label>
+      </button>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="questions" id="answer4" value="4">
-      <label class="form-check-label" for="answers">
+      <button class="form-check-label" for="answers" id="answer4" value="4">
         This is the forth answer
       </label>
     </div>
+    <!-- Did you Win or Lose -->
+    <div class=row>
+      <div class=col-md-6>
+          <h1 id=winLose></h1>
+      </div>
+    </div>
 
+    
+    <!-- onclick="myfunc()" -->
 
 
   <script>
+    //Variables
+    var set = 0;
+    var correct = 1;
+    var right = 0;
+    var wrong = 0;
+
+    //Functions for each set of questions
+    function questions1(){
+      q1 = "Who owned Neverland Ranch"
+      a1 = "Bob Ross"
+      a2 = "Albert Einstein"
+      a3 = "Michael Jackson"
+      a4 = "Flea"
+      document.getElementById("question").innerHTML = q1
+      document.getElementById("answer1").innerHTML = a1
+      document.getElementById("answer2").innerHTML = a2
+      document.getElementById("answer3").innerHTML = a3
+      document.getElementById("answer4").innerHTML = a4
+      correct = 3;
+    }
+    function questions2(){
+      q1 = "What country has the highest income per capita"
+      a1 = "Denmark"
+      a2 = "Luxembourg"
+      a3 = "Australia"
+      a4 = "Zimbabwe"
+      document.getElementById("question").innerHTML = q1
+      document.getElementById("answer1").innerHTML = a1
+      document.getElementById("answer2").innerHTML = a2
+      document.getElementById("answer3").innerHTML = a3
+      document.getElementById("answer4").innerHTML = a4
+      correct = 2;
+    }
+    function questions3(){
+      q1 = "What year did 9/11 happen"
+      a1 = "1999"
+      a2 = "2003"
+      a3 = "2002"
+      a4 = "2001"
+      document.getElementById("question").innerHTML = q1
+      document.getElementById("answer1").innerHTML = a1
+      document.getElementById("answer2").innerHTML = a2
+      document.getElementById("answer3").innerHTML = a3
+      document.getElementById("answer4").innerHTML = a4
+      correct = 4;
+    }
+    function endScreen(){
+      $('#timer').remove()
+      $('#question').remove()
+      $('#answer1').remove()
+      $('#answer2').remove()
+      $('#answer3').remove()
+      $('#answer4').remove()
+      document.getElementById("resultWin").innerHTML = `You got ${right} right`
+      document.getElementById("resultLose").innerHTML = `You got ${wrong} wrong`
+      clearInterval(count)
+    }
+    function ranOut(){
+      $('#timer').remove()
+      $('#question').remove()
+      $('#answer1').remove()
+      $('#answer2').remove()
+      $('#answer3').remove()
+      $('#answer4').remove()
+      document.getElementById("winLose").innerHTML = "YOU LOSE"
+      document.getElementById("resultWin").innerHTML = `You got ${right} right`
+      document.getElementById("resultLose").innerHTML = `You got ${wrong} wrong`
+    }
+
+    //Countdown Timer
+    // var countDown = new Date("0:0:20").getTime();
+    // var x = setInterval(function(){
+    //   var now = new Date().getTime();
+
+    //   var distance = countDownDate - now;
+
+    //   var seconds = Math.floor((distance % (1000 *60)) / 1000);
+    //   document.getElementById("timer").innerHTML = seconds
+
+    //   if(distance < 0){
+    //     document.getElementById("timer").innerHTML = "TIME'S UP"
+    //     setTimeout(function() {ranOut()}, 500);
+    //   }
+    // }, 1000)
+    
+    var timeleft = 15;
+    var count = setInterval(function(){
+      document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
+      timeleft -= 1;
+      if(timeleft <= 0){
+        clearInterval(count);
+        ranOut()
+      }
+    }, 1000); 
+
+
+    //Time Limit
+ 
+
+    //Click Event
+    $("button").on("click", function(){
+      var a = 0;
+      // if ($("#answer4").prop("checked")){
+      //    a = 4;
+      // } 
+      var a = $(this).attr("value")
+      console.log(a)
+      console.log(correct)
+      if(a == correct){
+        $("#winLose").append("Correct!")
+        right++
+      } else {
+        $("#winLose").append("Nope")
+        wrong++
+      }
+
+      setTimeout(function(){
+        $("#winLose").empty();
+        set++
+        console.log(set)
+        switch(set){
+        case 1:
+          questions1();
+          break;
+        case 2:
+          questions2()
+          break;
+        case 3:
+          questions3()
+          break;
+        case 4:
+          endScreen()
+          break;
+        }
+      }, 2000)
+    })
     //Show question and 4 answers that has a timer
     //add click events for each answer
     //make value for wrong answers = wrong and vice versa
