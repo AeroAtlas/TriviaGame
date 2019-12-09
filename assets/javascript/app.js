@@ -89,7 +89,7 @@ var count = setInterval(function(){
     clearInterval(count);
     ranOut()
   }
-}, 2000); //suppose to be 2000
+}, 1000);
 
 
 //Click Event
