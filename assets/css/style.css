@@ -1,0 +1,14 @@
+.jumbotron{
+  float: center;
+  background: blue;
+  color: white;
+}
+
+.container{
+  width:100%;
+  color: white;
+  margin-top: 10px;
+}
+body{
+  background-image: url(../images/triviaBackground2.jpg);
+}

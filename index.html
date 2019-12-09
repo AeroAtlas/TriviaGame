@@ -14,66 +14,68 @@
   <!-- Script -->
 </head>
 <body>
-  <!-- Title -->
-  <div class="jumbotron">
-    <h1 class="text-center">Trivia Game</h1>
-  </div>
-  <!-- Timer -->
-  <div class=row>
-    <div class=col-6>
-      <p id=timer>15 seconds remaining</p>
+  <div class="container">
+    <!-- Title -->
+    <div class="jumbotron">
+      <h1 class="text-center">Trivia Game</h1>
     </div>
-  </div>
-  <!-- How many you got Right -->
-  <div class=row>
-    <div class=col-6>
-      <h2 id=resultWin></h2>
-    </div>
-  </div>
-  <!-- How many you got wrong -->
-  <div class=row>
-    <div class=col-6>
-      <h2 id=resultLose></h2>
-    </div>
-  </div>
-  <!-- question -->
-  <div class=row>
-    <div class=col-6>
-      <h2 id=question>What is the answer?</h2>
-    </div>
-  </div>
-  <!-- Answers -->
-  <div class="form-check">
-      <button class="form-check-label" for="answers" id="answer1" value="1">
-        This is the first answer
-        </button>
-    </div>
-    <div class="form-check">
-      <button class="form-check-label" for="answers" id="answer2" value="2">
-        This is the second answer
-      </button>
-    </div>
-    <div class="form-check">
-      <button class="form-check-label" for="answers" id="answer3" value="3">
-        This is the third answer
-      </button>
-    </div>
-    <div class="form-check">
-      <button class="form-check-label" for="answers" id="answer4" value="4">
-        This is the forth answer
-      </label>
-    </div>
-    <!-- Did you Win or Lose -->
+    <!-- Timer -->
     <div class=row>
-      <div class=col-md-6>
-          <h1 id=winLose></h1>
+      <div class=col-md-12>
+        <p id=timer>20 seconds remaining</p>
       </div>
     </div>
-    <!-- //Reset Button -->
-    <div class="form-check">
-      <button id="reset">
-        </button>
+    <!-- How many you got Right -->
+    <div class=row>
+      <div class=col-md-12>
+        <h2 id=resultWin></h2>
+      </div>
     </div>
+    <!-- How many you got wrong -->
+    <div class=row>
+      <div class=col-md-12>
+        <h2 id=resultLose></h2>
+      </div>
+    </div>
+    <!-- question -->
+    <div class=row>
+      <div class=col-md-12>
+        <h2 id=question>Which country has a place called Bill Clinton Boulevard?</h2>
+      </div>
+    </div>
+    <!-- Answers -->
+    <div class="form-check">
+        <button class="form-check-label" for="answers" id="answer1" value="1">
+          Kosovo
+          </button>
+      </div>
+      <div class="form-check">
+        <button class="form-check-label" for="answers" id="answer2" value="2">
+          Lithuania
+        </button>
+      </div>
+      <div class="form-check">
+        <button class="form-check-label" for="answers" id="answer3" value="3">
+          Bosnia
+        </button>
+      </div>
+      <div class="form-check">
+        <button class="form-check-label" for="answers" id="answer4" value="4">
+          Finland
+        </label>
+      </div>
+      <!-- Did you Win or Lose -->
+      <div class=row>
+        <div class=col-md-6>
+            <h1 id=winLose></h1>
+        </div>
+      </div>
+      <!-- //Reset Button -->
+      <div class="form-check" id="reset-button">
+        <!-- <button id="reset">
+          </button> -->
+      </div>
+  </div>
 
   <!-- Java Script -->
   <script src="assets/javascript/app.js"></script>

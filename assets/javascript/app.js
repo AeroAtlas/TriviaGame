@@ -6,6 +6,7 @@ var wrong = 0;
 
 //Functions for each set of questions
 function questions1(){
+  $(".form-check-label").prop("disabled", false);
   q1 = "Who owned Neverland Ranch"
   a1 = "Bob Ross"
   a2 = "Albert Einstein"
@@ -19,6 +20,7 @@ function questions1(){
   correct = 3;
 }
 function questions2(){
+  $(".form-check-label").prop("disabled", false);
   q1 = "What country has the highest income per capita"
   a1 = "Denmark"
   a2 = "Luxembourg"
@@ -32,6 +34,7 @@ function questions2(){
   correct = 2;
 }
 function questions3(){
+  $(".form-check-label").prop("disabled", false);
   q1 = "What year did 9/11 happen"
   a1 = "1999"
   a2 = "2003"
@@ -51,10 +54,10 @@ function endScreen(){
   $('#answer2').remove()
   $('#answer3').remove()
   $('#answer4').remove()
+  createButton();
   document.getElementById("winLose").innerHTML = "YOU WIN"
   document.getElementById("resultWin").innerHTML = `You got ${right} right`
   document.getElementById("resultLose").innerHTML = `You got ${wrong} wrong`
-  document.getElementById("reset").innerHTML = "Try Again?"
   clearInterval(count)
 }
 function ranOut(){
@@ -67,12 +70,18 @@ function ranOut(){
   document.getElementById("winLose").innerHTML = "YOU LOSE"
   document.getElementById("resultWin").innerHTML = `You got ${right} right`
   document.getElementById("resultLose").innerHTML = `You got ${wrong} wrong`
-  document.getElementById("reset").innerHTML = "Try Again?"
+}
+function createButton(){
+  var button = $("<button>");
+  button.attr("id", "reset");
+  button.attr("onclick", "clickReset()")
+  button.text("Try Again");
+  $("#reset-button").append(button);
 }
 
 
 //Timer
-var timeleft = 15;
+var timeleft = 19;
 var count = setInterval(function(){
   document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
   timeleft -= 1;
@@ -80,12 +89,13 @@ var count = setInterval(function(){
     clearInterval(count);
     ranOut()
   }
-}, 1000); 
+}, 2000); //suppose to be 2000
 
 
 //Click Event
-$("button").on("click", function(){
+$(".form-check-label").on("click", function(){
   var a = $(this).attr("value")
+  $(".form-check-label").prop("disabled", true);
   console.log(a)
   console.log(correct)
   if(a == correct){
@@ -115,8 +125,9 @@ $("button").on("click", function(){
       break;
     }
   }, 2000)
-
-  $("#reset").on("click", function(){
-    window.location.reload();
-  })
 })
+
+//Reset Function
+function clickReset(){
+  window.location.reload();
+};
